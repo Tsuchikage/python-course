@@ -1,25 +1,17 @@
+23
 
-
-==> task_2 <==
-task_2 21
-task_2 22
-task_2 23
-task_2 24
-task_2 25
-task_2 26
-task_2 27
-task_2 28
-task_2 29
-task_2 30
-
-==> task_2_1 <==
-task_2_1 21
-task_2_1 22
-task_2_1 23
-task_2_1 24
-task_2_1 25
-task_2_1 26
-task_2_1 27
-task_2_1 28
-task_2_1 29
-task_2_1 30
+as
+d
+a
+sd
+a
+s
+ed
+as
+d
+a
+s
+d
+as
+d
+as

@@ -41,21 +41,19 @@ def user_input(output_file):
 
 
 def main():
-    file_paths = ["task_2", "task_2_1"]
+    file_paths = ["task_3", "task_32_1"]
 
     # Проверяем существование файлов по их именам
-    for file_path in file_paths:
-        if not os.path.exists(file_path):
-            print(f"File '{file_path}' does not exist.")
-            # Если хотя бы один файл не существует, переходим к пользовательскому вводу
-            with open("artifacts/artifact_2.txt", 'w') as output_file:
-                user_input(output_file)
-            return
+    existing_files = [file_path for file_path in file_paths if os.path.exists(file_path)]
 
-    # Если все файлы существуют, обрабатываем их
-    with open("artifacts/artifact_2.txt", 'w') as output_file:
-        process_files(file_paths, output_file)
-
+    if existing_files:
+        # Если хотя бы один файл существует, обрабатываем его
+        with open("artifacts/artifact_2.txt", 'w') as output_file:
+            process_files(existing_files, output_file)
+    else:
+        # Если ни одного существующего файла нет, переходим к пользовательскому вводу
+        with open("artifacts/artifact_2.txt", 'w') as output_file:
+            user_input(output_file)
 
 if __name__ == "__main__":
     main()
