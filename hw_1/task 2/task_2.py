@@ -41,7 +41,7 @@ def user_input(output_file):
 
 
 def main():
-    file_paths = ["task_3", "task_32_1"]
+    file_paths = ["task_2", "task_2_1"]
 
     # Проверяем существование файлов по их именам
     existing_files = [file_path for file_path in file_paths if os.path.exists(file_path)]
