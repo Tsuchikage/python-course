@@ -2,44 +2,43 @@ import argparse
 import os
 
 
-def nl(input_file=None, num_lines=None, output_file=None):
-    # Проверяем, передан ли файл и существует ли он
-    if input_file and os.path.isfile(input_file):
-        # Если файл существует, читаем строки из файла
-        with open(input_file, 'r') as file:
-            lines = file.readlines()
-    else:
-        # Если файл не передан или не существует, читаем строки из stdin
-        lines = [input() for _ in range(num_lines)]
+def nl(line, line_number, output_file_path=None):
+    # Выводим пронумерованную строку в консоль
+    print(f"{line_number}\t{line.strip()}")
 
-    # Выводим пронумерованные строки в консоль
-    for i, line in enumerate(lines, start=1):
-        print(f"{i}\t{line.strip()}")
+    # Если указан путь к файлу для записи, записываем туда вывод
+    if output_file_path:
+        with open(output_file_path, 'a') as out_file:
+            out_file.write(f"{line_number}\t{line.strip()}\n")
 
-    # Если указан файл для записи, записываем туда вывод
-    if output_file:
-        with open(output_file, 'w') as out_file:
-            for i, line in enumerate(lines, start=1):
-                out_file.write(f"{i}\t{line.strip()}\n")
 
+def process_files(file_paths, output_file_path):
+    for file_path in file_paths:
+        # Проверяем, существует ли файл
+        if os.path.exists(file_path):
+            with open(file_path, 'r') as file:
+                for i, line in enumerate(file, start=1):
+                    nl(line, i, output_file_path)
+
+
+def user_input(output_file_path, num_lines):
+    # Читаем строки из stdin
+    for i in range(1, num_lines + 1):
+        line = input()
+        nl(line, i, output_file_path)  # Выводим после каждого ввода
 
 if __name__ == "__main__":
     # Парсинг аргументов командной строки
-    parser = argparse.ArgumentParser(description="Print numbered lines from a file or stdin.")
-    default_file = os.path.abspath("task_1")
-    parser.add_argument("file", nargs="?", default=default_file, help="Input file (default: task_1.txt)")
-    parser.add_argument(
-        "-n",
-        "--num-lines",
-        type=int,
-        default=5,
-        help="Number of lines to read from stdin (default: 5)")
-    parser.add_argument(
-        "-o",
-        "--output-file",
-        default="artifacts/artifact_1.txt",
-        help="Output file (default: artifact_1.txt)")
-    args = parser.parse_args()
+    file_paths = ["task_1"]
+    output_file_path = "artifacts/artifact_1.txt"
+    num_lines = 5  # Пример: количество строк для пользовательского ввода
 
-    # Вызываем функцию nl с переданными аргументами
-    nl(input_file=args.file, num_lines=args.num_lines, output_file=args.output_file)
+    # Проверяем существование файлов по их именам
+    existing_files = [file_path for file_path in file_paths if os.path.exists(file_path)]
+
+    if existing_files:
+        # Если хотя бы один файл существует, обрабатываем его
+        process_files(existing_files, output_file_path)
+    else:
+        # Если ни одного существующего файла нет, переходим к пользовательскому вводу
+        user_input(output_file_path, num_lines)
