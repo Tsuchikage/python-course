@@ -1,12 +1,3 @@
 
-==> task_3 <==
-Lines	Words	Bytes	File
-30	60	319	task_3
-
-==> task_3_1 <==
-Lines	Words	Bytes	File
-30	60	379	task_3_1
-
-==> Total <==
 Lines	Words	Bytes	
-60	120	698
+5	7	19	
