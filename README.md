@@ -27,3 +27,7 @@
 Пользовательский ввод
 
 ![image](https://github.com/Tsuchikage/python-course/blob/main/hw_1/task_3/artifacts/task_3_2.png)
+
+## HW 2
+### Task 1
+![image](https://github.com/Tsuchikage/python-course/blob/main/hw_2/task_2/artifacts/task_1_1.png)
