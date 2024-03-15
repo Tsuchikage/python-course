@@ -30,6 +30,3 @@ if __name__ == "__main__":
     subprocess.run([pdflatex_path, "-output-directory", artifacts_directory, tex_file_path])
 
     print(f"PDF generated at: {pdf_file_path}")
-
-# Установка созданной библиотеки
-# pip install latex-generator==0.6 
