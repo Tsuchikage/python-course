@@ -1,9 +1,10 @@
-import os
 import aiohttp
-import asyncio
 from bs4 import BeautifulSoup
 import json
 import datetime
+import pandas as pd
+from pathlib import Path
+from aiomisc import new_event_loop, PeriodicCallback
 
 
 async def fetch_html(session, url):
@@ -12,41 +13,30 @@ async def fetch_html(session, url):
 
 
 async def main():
-    while True:
-        async with aiohttp.ClientSession() as session:
-            html = await fetch_html(session, 'https://realty.yandex.ru/sankt-peterburg/snyat/kvartira/')
+    async with aiohttp.ClientSession() as session:
+        html = await fetch_html(session, 'https://realty.yandex.ru/sankt-peterburg/snyat/kvartira/')
 
-            # Использую BeautifulSoup для парсинга HTML-кода
-            soup = BeautifulSoup(html, 'html.parser')
+        soup = BeautifulSoup(html, 'html.parser')
 
-            main_info = {
-                "title": soup.title.string,
-                "html_content": str(soup),
-                "timestamp": str(datetime.datetime.now())
-            }
+        main_info = {
+            "title": soup.title.string,
+            "html_content": str(soup),
+            "timestamp": str(datetime.datetime.now())
+        }
 
-            # Сохраняю основную информацию в JSON файл
-            with open('realty_page.json', 'w', encoding='utf-8') as json_file:
-                json.dump(main_info, json_file, ensure_ascii=False, indent=4)
+        # Сохраняю основную информацию в JSON файл
+        with open('realty_page.json', 'w', encoding='utf-8') as json_file:
+            json.dump(main_info, json_file, ensure_ascii=False, indent=4)
 
-            apartments = parse_apartments('realty_page.json')
+        apartments = parse_apartments('realty_page.json')
 
-            script_directory = os.path.dirname(os.path.abspath(__file__))
-            artifacts_directory = os.path.join(script_directory, "artifacts")
-            os.makedirs(artifacts_directory, exist_ok=True)
+        artifacts_directory = Path("artifacts")
+        artifacts_directory.mkdir(parents=True, exist_ok=True)
 
-            with open(os.path.join(artifacts_directory, "artifact_1.txt"), "a", encoding="utf-8") as file:
-                file.write(f"Updated at {datetime.datetime.now()}:\n")
-
-                for apartment in apartments:
-                    file.write(f"Здание: {remove_nbsp(apartment['building'])}\n")
-                    file.write(f"Квартира: {remove_nbsp(apartment['title'])}\n")
-                    file.write(f"Улица: {remove_nbsp(apartment['address'])}\n")
-                    file.write(f"Метро: {remove_nbsp(apartment['metro'])}\n")
-                    file.write(f"Описание: {remove_nbsp(apartment['description'])}\n")
-                    file.write("-" * 30 + "\n")
-
-        await asyncio.sleep(3600)  # Подождать 1 час перед следующим выполнением
+        # Записываем информацию о квартирах в CSV файл
+        csv_file_path = artifacts_directory / "apartments_info.csv"
+        df = pd.DataFrame(apartments)
+        df.to_csv(csv_file_path, index=False)
 
 
 def parse_apartments(json_file):
@@ -72,9 +62,9 @@ def parse_apartments(json_file):
     return apartments
 
 
-def remove_nbsp(text):
-    return text.replace('\xa0', ' ')
-
-
 if __name__ == "__main__":
-    asyncio.run(main())
+    loop = new_event_loop()
+    periodic = PeriodicCallback(main)
+
+    periodic.start(3600, delay=0)
+    loop.run_forever()
