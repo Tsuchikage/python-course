@@ -1,21 +1,22 @@
 import aiohttp
 import asyncio
-import os
+from pathlib import Path
+import aiofiles
 from aiohttp import ClientSession
 
 
-async def download_image(session: ClientSession, url: str, folder: str, filename: str) -> None:
+async def download_image(session: ClientSession, url: str, folder: Path, filename: str) -> None:
     async with session.get(url) as response:
         content = await response.read()
-        filepath = os.path.join(folder, filename)
+        filepath = folder / filename
 
-        with open(filepath, 'wb') as f:
-            f.write(content)
+        async with aiofiles.open(filepath, 'wb') as f:
+            await f.write(content)
 
         print(f"Downloaded: {filename}")
 
 
-async def download_images(num_images: int, folder: str) -> None:
+async def download_images(num_images: int, folder: Path) -> None:
     url = 'https://picsum.photos/200/300'
 
     async with aiohttp.ClientSession() as session:
@@ -31,10 +32,9 @@ async def download_images(num_images: int, folder: str) -> None:
 
 if __name__ == "__main__":
     num_images_to_download = int(input("Enter the number of images to download: "))
-    script_directory = os.path.dirname(os.path.abspath(__file__))
-    download_folder = os.path.join(script_directory, "artifacts")
+    download_folder = Path("artifacts")
 
-    os.makedirs(download_folder, exist_ok=True)
+    download_folder.mkdir(parents=True, exist_ok=True)
 
     loop = asyncio.get_event_loop()
     loop.run_until_complete(download_images(num_images_to_download, download_folder))
