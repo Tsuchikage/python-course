@@ -13,6 +13,7 @@ def process_a(queue_ab, pipe_ab):
 
         processed_message = message.lower()
         pipe_ab.send(processed_message)
+        time.sleep(5)
 
 
 def process_b(pipe_ab, queue_ba):
@@ -47,8 +48,6 @@ if __name__ == "__main__":
 
             result_file.write(f"{timestamp} - Sent: {user_input}\n")
             queue_ab.put(user_input)
-
-            time.sleep(5)  # Sleep for 5 seconds
 
             processed_message = queue_ba.get()
             result_file.write(f"{timestamp} - Received: {processed_message}\n")
