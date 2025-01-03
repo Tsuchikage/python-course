@@ -1,24 +1,24 @@
-### **Домашнее задание 4**: Параллельное программирование
+### **Homework 4**: Parallel Programming
 
-#### **4.1 Сравнение времени выполнения потоков и процессов**
+#### **4.1 Comparing Execution Time: Threads vs. Processes**
 
-- **Задача**:
-  1. Реализовать функцию для подсчёта чисел Фибоначчи.
-  2. Сравнить время выполнения для больших чисел `n` при:
-     - Синхронном выполнении.
-     - Запуске через 10 потоков (threading).
-     - Запуске через 10 процессов (multiprocessing).
-  3. Для каждого подхода выполнить 10 вызовов функции параллельно и измерить общее время выполнения.
-- **Ограничение**:
-  - Нельзя использовать `concurrent.futures`, задача направлена на ручное управление потоками и процессами.
-- **Артефакт**: текстовый файл с результатами замеров времени для каждого метода.
+- **Task**:
+  1. Implement a function to compute Fibonacci numbers.
+  2. Compare execution time for large numbers `n` under the following scenarios:
+     - Synchronous execution.
+     - Execution using 10 threads (`threading`).
+     - Execution using 10 processes (`multiprocessing`).
+  3. For each scenario, execute the function 10 times in parallel and measure the total execution time.
+- **Constraint**:
+  - `concurrent.futures` is not allowed. The task focuses on manual management of threads and processes.
+- **Artifact**: A text file with execution time measurements for each method.
 
 ---
 
-#### **4.2 Распараллеливание численного интегрирования**
+#### **4.2 Parallelizing Numerical Integration**
 
-- **Задача**:
-  1. Переписать функцию численного интегрирования:
+- **Task**:
+  1. Rewrite the numerical integration function:
      ```python
      import math
      def integrate(f, a, b, *, n_jobs=1, n_iter=10000000):
@@ -28,24 +28,24 @@
              acc += f(a + i * step) * step
          return acc
      ```
-  2. Добавить возможность параллельного выполнения через:
+  2. Add support for parallel execution using:
      - `ThreadPoolExecutor`
      - `ProcessPoolExecutor`
-  3. Включить логирование начала и завершения выполнения каждой задачи.
-  4. Провести замеры времени выполнения для `integrate(math.cos, 0, math.pi / 2, n_jobs=n_jobs)` с разным числом потоков/процессов (`n_jobs` от 1 до `cpu_num * 2`).
-- **Артефакты**:
-  - Лог-файл с деталями выполнения.
-  - Таблица сравнения времени выполнения для обоих методов (`ThreadPoolExecutor` и `ProcessPoolExecutor`) в зависимости от числа потоков/процессов.
+  3. Include logging to indicate the start and completion of each task.
+  4. Measure execution time for `integrate(math.cos, 0, math.pi / 2, n_jobs=n_jobs)` with varying numbers of jobs (`n_jobs` from 1 to `cpu_num * 2`).
+- **Artifacts**:
+  - A log file with execution details.
+  - A table comparing execution times for both methods (`ThreadPoolExecutor` and `ProcessPoolExecutor`) depending on the number of threads/processes.
 
 ---
 
-#### **4.3 Организация межпроцессного взаимодействия**
+#### **4.3 Interprocess Communication**
 
-- **Задача**:
-  1. Реализовать приложение с межпроцессным взаимодействием:
-     - Главный процесс отправляет строки через `stdin` в процесс `A`.
-     - Процесс `A` сохраняет строки в очередь, преобразует их в нижний регистр (`.lower()`) и пересылает в процесс `B`.
-     - Процесс `B` кодирует строки через `rot13`, выводит результат в `stdout` и отправляет обратно в очередь главного процесса.
-  2. Процесс `A` отправляет сообщения в `B` с задержкой 5 секунд.
-  3. Использовать `multiprocessing.Queue` (возможно, дополнительно `multiprocessing.Pipe` и потоки для обработки данных).
-- **Артефакт**: текстовый файл с взаимодействием программы и пользователя, включая временные метки сообщений.
+- **Task**:
+  1. Implement an application with interprocess communication:
+     - The main process sends strings through `stdin` to process `A`.
+     - Process `A` stores the strings in a queue, converts them to lowercase (`.lower()`), and forwards them to process `B`.
+     - Process `B` encodes the strings using `rot13`, prints the result to `stdout`, and sends the result back to the main process via a queue.
+  2. Process `A` sends messages to `B` with a delay of 5 seconds.
+  3. Use `multiprocessing.Queue` (and optionally `multiprocessing.Pipe` and threads for data handling).
+- **Artifact**: A text file documenting the program's interaction with the user, including timestamps for the messages.

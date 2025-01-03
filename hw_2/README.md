@@ -1,48 +1,48 @@
-### **Домашнее задание 2**: Генератор LaTeX
+### **Homework 2**: LaTeX Generator
 
-Цель задания — реализовать генератор LaTeX в функциональном стиле. **Использование сторонних библиотек для генерации LaTeX запрещено**.
-
----
-
-#### **2.1 Генерация таблиц**
-
-- Реализовать функцию для генерации таблиц в формате `.tex`:
-  - На вход функция принимает двойной список (список списков).
-  - На выходе возвращается строка с валидным LaTeX-кодом таблицы.
-- Проверить корректность сгенерированного кода можно, например, в **Overleaf**.
-- Сохранить пример использования функции в `.tex` файл:
-  - Для этого использовать другой модуль (.py файл), импортирующий функцию.
-  - Артефакт: `.tex` файл с примером работы функции.
-
-> **Совет:** Если вы не работали с LaTeX ранее, это отличный повод попробовать!
+The goal of this assignment is to implement a LaTeX generator in a functional programming style. **Using third-party libraries for LaTeX generation is prohibited**.
 
 ---
 
-#### **2.2 Генерация картинок**
+#### **2.1 Table Generation**
 
-- Дополнить предыдущий модуль функцией для генерации кода вставки изображений в LaTeX:
-  - В качестве изображения использовать любой `.png` файл.
-- Подготовить библиотеку:
-  - Сборка библиотеки с помощью **setuptools** или **conda-build**.
-  - Размещение библиотеки в репозитории (например, на **PyPI** или **Anaconda**).
-  - Установить библиотеку и использовать её для генерации:
-    - PDF файла с таблицей (из задачи 2.1) и вставленным изображением.
-- Артефакты:
-  - Сгенерированный PDF файл.
-  - Ссылка на репозиторий с библиотекой.
+- Implement a function for generating tables in `.tex` format:
+  - The function should take a nested list (list of lists) as input.
+  - The output should be a string containing valid LaTeX table code.
+- Verify the correctness of the generated code, e.g., using **Overleaf**.
+- Save an example of the function's usage to a `.tex` file:
+  - Use a separate module (.py file) that imports the function.
+  - Artifact: a `.tex` file demonstrating the function's output.
 
-> **Примечание:** Для сборки PDF файла можно использовать `pdflatex`. Не забудьте установить дистрибутив LaTeX.
+> **Tip:** If you haven’t worked with LaTeX before, this is an excellent opportunity to start!
 
 ---
 
-#### **2.3 Автоматизация с Docker**
+#### **2.2 Image Generation**
 
-- Для автоматизации процесса сборки:
-  - Создать **Dockerfile**, который устанавливает все необходимые зависимости.
-  - Внутри контейнера:
-    - Запустить ваш код для генерации `.tex` файла.
-    - Сгенерировать PDF файл.
-- Артефакт:
-  - Сам Dockerfile, сохранённый в папке `hw02`.
+- Extend the previous module with a function for generating LaTeX code to include images:
+  - Use any `.png` file as the image.
+- Prepare a library:
+  - Build the library using **setuptools** or **conda-build**.
+  - Publish the library to a repository (e.g., **PyPI** or **Anaconda**).
+  - Install the library and use it to generate:
+    - A PDF file containing a table (from Task 2.1) and an embedded image.
+- Artifacts:
+  - The generated PDF file.
+  - A link to the library's repository.
 
-> **Дополнительно:** Разрешено использование **docker-compose** для удобства работы.
+> **Note:** Use `pdflatex` to generate the PDF. Make sure to install a LaTeX distribution.
+
+---
+
+#### **2.3 Automation with Docker**
+
+- Automate the build process:
+  - Create a **Dockerfile** that installs all required dependencies.
+  - Inside the container:
+    - Run your code to generate a `.tex` file.
+    - Generate a PDF file.
+- Artifact:
+  - The Dockerfile, saved in the `hw02` folder.
+
+> **Optional:** Using **docker-compose** is allowed for convenience.

@@ -1,36 +1,36 @@
-### **Домашнее задание 1**: CLI приложения
+### **Homework 1**: CLI Applications
 
-Для выполнения задания необходимо реализовать несколько CLI приложений. В дополнение к коду нужно приложить текстовый файл с примерами команд и их выводами из терминала для проверки работоспособности.
-
----
-
-#### **1.1 Реализация утилиты `nl`**
-
-Создать упрощенный вариант утилиты `nl`, которая выполняет следующие функции:
-
-- Выводит пронумерованные строки из файла в `stdout`.
-- Если файл не указан, читает строки из `stdin`.
-- Должна работать аналогично команде `nl -b a`.
+The task involves implementing several CLI applications. In addition to the code, you must provide a text file with examples of commands and their outputs from the terminal to demonstrate functionality.
 
 ---
 
-#### **1.2 Реализация утилиты `tail`**
+#### **1.1 Implementation of the `nl` Utility**
 
-Создать упрощенный вариант утилиты `tail`, которая выполняет следующие функции:
+Create a simplified version of the `nl` utility with the following features:
 
-- Выводит последние 10 строк из каждого указанного файла.
-- Если передано больше одного файла, перед обработкой каждого файла выводит его имя.
-- Если файлы не указаны, выводит последние 17 строк из `stdin`.
-- Формат вывода должен быть аналогичен оригинальной утилите `tail`.
+- Outputs numbered lines from a file to `stdout`.
+- If no file is specified, reads lines from `stdin`.
+- Should behave similarly to the `nl -b a` command.
 
 ---
 
-#### **1.3 Реализация утилиты `wc`**
+#### **1.2 Implementation of the `tail` Utility**
 
-Создать утилиту, которая работает аналогично `wc` без дополнительных опций. Программа должна:
+Create a simplified version of the `tail` utility with the following features:
 
-- Выводить для каждого файла статистику в виде трёх чисел (количество строк, слов и байтов) и имени файла.
-- Если передано несколько файлов, в конце выводить общую статистику (`total`).
-- Если файлы не указаны, считывать данные из `stdin` и выводить статистику без имени файла.
+- Outputs the last 10 lines from each specified file.
+- If more than one file is provided, the utility should display the file name before processing each file.
+- If no files are specified, outputs the last 17 lines from `stdin`.
+- The output format should match the behavior of the original `tail` utility.
+
+---
+
+#### **1.3 Implementation of the `wc` Utility**
+
+Create a utility that works similarly to `wc` without additional options. The program should:
+
+- Output statistics for each file as three numbers (line count, word count, and byte count) followed by the file name.
+- If multiple files are provided, display a summary (`total`) at the end.
+- If no files are specified, read data from `stdin` and output statistics without a file name.
 
 ---

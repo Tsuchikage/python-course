@@ -1,36 +1,36 @@
-### **Домашнее задание 5**: Асинхронное программирование и веб-скрапинг
+### **Homework 5**: Asynchronous Programming and Web Scraping
 
-#### **5.1 Асинхронное скачивание файлов**
+#### **5.1 Asynchronous File Downloading**
 
-- **Задача**:
-  1. Реализовать асинхронный скрипт для скачивания картинок или файлов с одного из сайтов:
+- **Task**:
+  1. Implement an asynchronous script for downloading images or files from one of the following websites:
      - [https://thisxdoesnotexist.com/](https://thisxdoesnotexist.com/)
-     - [https://picsum.photos/](https://picsum.photos/) (предпочтительно, так как этот сайт предоставляет уникальные изображения при каждом запросе).
-  2. Пользователь должен иметь возможность указать количество уникальных файлов для загрузки и целевую папку для сохранения.
-  3. Использовать библиотеку `aiohttp` для асинхронных запросов.
-  4. Избегать использования блокирующего кода внутри асинхронных задач.
+     - [https://picsum.photos/](https://picsum.photos/) (preferred, as it provides unique images with each request).
+  2. Allow users to specify the number of unique files to download and the target folder for saving them.
+  3. Use the `aiohttp` library for asynchronous requests.
+  4. Avoid using blocking code within asynchronous tasks.
 
 ---
 
-#### **5.2 Асинхронный скрапер объявлений**
+#### **5.2 Asynchronous Real Estate Ad Scraper**
 
-- **Задача**:
-  1. Разработать асинхронный скрапер для сбора данных об объявлениях на съём жилья с одного из сайтов:
+- **Task**:
+  1. Develop an asynchronous scraper to collect rental property listings from one of the following websites:
      - [https://cian.ru](https://cian.ru)
      - [https://realty.yandex.ru](https://realty.yandex.ru)
      - [https://www.avito.ru](https://www.avito.ru)
-  2. Собирать основную информацию из объявлений, включая цену, описание и ссылки.
-  3. Сохранять данные в формате, удобном для дальнейшего использования.
-  4. Реализовать автоматический поиск новых объявлений.
+  2. Gather key details from the listings, such as price, description, and links.
+  3. Save the data in a format suitable for further use.
+  4. Implement automatic detection of new listings.
 
 ---
 
-#### **5.3 Телеграм-бот для подписки на объявления**
+#### **5.3 Telegram Bot for Ad Notifications**
 
-- **Задача**:
-  1. Создать базу данных (или использовать файловое хранилище) для сохранения информации, полученной из скрапера.
-  2. Реализовать телеграм-бота, позволяющего пользователям:
-     - Подписываться на фильтры для поиска объявлений (например, по цене, местоположению и другим критериям).
-     - Получать уведомления при добавлении подходящих объявлений в базу данных.
-  3. Завернуть проект в Docker для удобного развертывания на удалённом сервере.
-  4. Обеспечить защиту токенов и конфиденциальных данных, избегая их утечки в публичные репозитории.
+- **Task**:
+  1. Create a database (or use file storage) to store the information collected by the scraper.
+  2. Develop a Telegram bot that allows users to:
+     - Subscribe to search filters (e.g., by price, location, or other criteria).
+     - Receive notifications when new relevant listings are added to the database.
+  3. Package the project into a Docker container for easy deployment on a remote server.
+  4. Ensure the protection of tokens and sensitive data, avoiding any leaks in public repositories.

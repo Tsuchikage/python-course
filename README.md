@@ -1,60 +1,60 @@
-# Курс "Продвинутый Python" ITMO 2024
+# Advanced Python Course ITMO 2024
 
 ---
 
-## Описание проекта
+## Project Overview
 
-Этот репозиторий содержит материалы и домашние задания для курса "Продвинутый Python" в университете ИТМО (весна 2024 года).  
-Курс направлен на углубление знаний Python через выполнение практических задач в следующих областях:
+This repository contains materials and homework assignments for the "Advanced Python" course at ITMO University (Spring 2024).  
+The course aims to deepen Python knowledge through practical tasks in the following areas:
 
-- **CLI приложения:** создание утилит, аналогичных `nl`, `tail` и `wc`.
-- **Работа с LaTeX:** генерация таблиц, изображений и автоматизация через Docker.
-- **Работа с матрицами:** реализация матричных операций и хэш-функций.
-- **Асинхронное и параллельное программирование:** использование потоков, процессов и asyncio.
-- **Веб-скрапинг и боты:** сбор данных, создание Telegram-ботов и работа с базами данных.
+- **CLI Applications:** Creating utilities similar to `nl`, `tail`, and `wc`.
+- **Working with LaTeX:** Generating tables, images, and automating tasks using Docker.
+- **Matrix Operations:** Implementing matrix operations and hash functions.
+- **Asynchronous and Parallel Programming:** Utilizing threads, processes, and asyncio.
+- **Web Scraping and Bots:** Data collection, building Telegram bots, and database integration.
 
-Курс включает разнообразные практические задания, направленные на освоение как базовых, так и продвинутых концепций программирования на Python.
-
----
-
-## Домашние задания
-
-### **Домашнее задание 1**: CLI приложения
-
-**1.1** Реализация утилиты `nl`, которая нумерует строки из файла или `stdin`.  
-**1.2** Реализация утилиты `tail`, выводящей последние строки из файлов или `stdin`.  
-**1.3** Реализация утилиты `wc` для подсчета строк, слов и байтов.  
+The course includes a variety of practical assignments designed to master both basic and advanced programming concepts in Python.
 
 ---
 
-### **Домашнее задание 2**: Генератор LaTeX
+## Homework Assignments
 
-**2.1** Создание функции для генерации таблиц в формате LaTeX.  
-**2.2** Создание функции для вставки изображений в LaTeX и публикация библиотеки на PyPI/Anaconda.  
-**2.3** Использование Docker для автоматической генерации PDF из `.tex` файлов.  
+### **Homework 1**: CLI Applications
 
----
-
-### **Домашнее задание 3**: Работа с матрицами
-
-**3.1** Реализация класса для выполнения операций сложения и умножения матриц.  
-**3.2** Расширение класса матриц с использованием numpy и добавление удобного интерфейса.  
-**3.3** Реализация хэш-функции для матриц, кэширование операций и поиск коллизий.  
+**1.1** Implementation of the `nl` utility to number lines from a file or `stdin`.  
+**1.2** Implementation of the `tail` utility to output the last lines from files or `stdin`.  
+**1.3** Implementation of the `wc` utility to count lines, words, and bytes.  
 
 ---
 
-### **Домашнее задание 4**: Параллельное программирование
+### **Homework 2**: LaTeX Generator
 
-**4.1** Сравнение производительности потоков, процессов и синхронного подхода на примере вычисления чисел Фибоначчи.  
-**4.2** Переписывание функции интеграла для распараллеливания через ThreadPoolExecutor и ProcessPoolExecutor.  
-**4.3** Реализация взаимодействия между процессами с использованием `multiprocessing.Queue` и кодирования сообщений через rot13.  
+**2.1** Creating a function to generate tables in LaTeX format.  
+**2.2** Creating a function to insert images into LaTeX and publishing the library on PyPI/Anaconda.  
+**2.3** Using Docker to automate PDF generation from `.tex` files.  
 
 ---
 
-### **Домашнее задание 5**: Асинхронное программирование и веб-скрапинг
+### **Homework 3**: Working with Matrices
 
-**5.1** Асинхронное скачивание изображений с использованием `aiohttp`.  
-**5.2** Асинхронный скрапер для объявлений о недвижимости с сохранением данных.  
-**5.3** Создание Telegram-бота для подписки на объявления с настройкой уведомлений через базу данных.  
+**3.1** Implementing a class to perform matrix addition and multiplication operations.  
+**3.2** Extending the matrix class using numpy and adding a convenient interface.  
+**3.3** Implementing a hash function for matrices, caching operations, and finding collisions.  
+
+---
+
+### **Homework 4**: Parallel Programming
+
+**4.1** Comparing the performance of threads, processes, and synchronous approaches using Fibonacci number calculations.  
+**4.2** Rewriting an integration function for parallel execution using ThreadPoolExecutor and ProcessPoolExecutor.  
+**4.3** Implementing inter-process communication with `multiprocessing.Queue` and encoding messages with rot13.  
+
+---
+
+### **Homework 5**: Asynchronous Programming and Web Scraping
+
+**5.1** Asynchronous downloading of images using `aiohttp`.  
+**5.2** Developing an asynchronous scraper for real estate listings with data storage.  
+**5.3** Creating a Telegram bot for subscribing to listings and sending notifications via a database.  
 
 ---
